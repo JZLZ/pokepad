@@ -1,0 +1,7 @@
+{
+  "name": "Pokepad",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
