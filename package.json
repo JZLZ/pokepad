@@ -1,5 +1,5 @@
 {
-  "name": "Pokepad",
+  "name": "pokepad",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -16,7 +16,7 @@
     "@angular/animations": "^19.0.0",
     "@angular/common": "^19.0.0",
     "@angular/compiler": "^19.0.0",
-    "@angular/core": "^19.0.0",
+    "@angular/core": "^19.2.14",
     "@angular/forms": "^19.0.0",
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
@@ -48,6 +48,7 @@
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^48.2.1",
@@ -59,6 +60,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "^8.5.6",
+    "postcss-import": "^15.0.0",
+    "tailwindcss": "^4.1.10",
     "typescript": "~5.6.3"
   },
   "description": "An Ionic project"
