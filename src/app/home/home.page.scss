@@ -1,53 +1,52 @@
+// Styles do title
 ion-title {
-  display: center;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-style: bold;
   color: whitesmoke;
   background-color: red;
-  width: 100%;
-  height: 100%;
+  padding: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
 }
 h1 {
-  font-size: 1.5rem;
+  text-align: center;
+  font-size: 2.5rem;
   font-weight: 600;
   font-style: bold;
   color: whitesmoke;
   width: 100%;
   height: 100%;
-}
-ion-icon {
-  color: whitesmoke;
-  font-size: 1.5rem;
-}
-#container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
+}// ion-card no formato de cartão
 ion-card {
-  width: 90%;
-  margin: 10px;
-  padding: 20px;
-  background-color: #ff3737;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
 }
-ion-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+// cards individuais dentro do ion-card
+ion-card .card {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-ion-card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: whitesmoke;
+// Estilo para o ion-button
+ion-button {
+  --background: #ff5722; /* Cor de fundo */
+  --color: white; /* Cor do texto */
+  --border-radius: 8px; /* Bordas arredondadas */
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+  margin: 0.5rem;
 }
-
-p {
-  font-size: 1rem;
-  color: rgb(178, 178, 178);
+// formatando imagem
+img {
+  width: 10%;
+  height: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

@@ -9,7 +9,11 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   getPokemons () {
-    return this.http.get('https://pokeapi.co/api/v2/pokemon?limit=100');
+    return this.http.get('https://pokeapi.co/api/v2/pokemon/');
   }
+  getPokemonDetails(nameOrId: string): Observable<any> {
+  return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${nameOrId}`);
+  }
+
 }
 
