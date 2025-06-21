@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>PokePad API
+      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="center-x" *ngIf="pokemonData">
+  <ion-card>
+    <img class="imagem" [src]="pokemonData.image" [alt]="pokemonData.name" />
+    <figcaption>{{ pokemonData.name | titlecase }}</figcaption>
+    <h4><strong>Base Experience:</strong> {{ pokemonData.base_experience }} XP</h4>
+
+    <ion-card-content>
+      <div class="column">
+        <p><strong>Height:</strong> {{ pokemonData.height}} dm</p>
+        <p><strong>Weight:</strong> {{ pokemonData.weight}} hg</p>
+      </div>
+      <div class="column">
+        <p><strong>Abilities:</strong> {{ pokemonData.abilities.join(', ') }}</p>
+        <p><strong>Types:</strong> {{ pokemonData.types.join(', ') }}</p>
+      </div>
+      
+      <div *ngIf="pokemonData.effect_entries?.length">
+        <p><strong>Effect:</strong></p>
+        <ul>
+          <li *ngFor="let entry of pokemonData.effect_entries">
+            {{ entry.effect }}
+          </li>
+        </ul>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -43,5 +43,4 @@ export class HomePage implements OnInit {
   showPokemon(id: number) {
     console.log('Pokemon ID:', id);
   }
-
 }

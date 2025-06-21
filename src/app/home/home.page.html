@@ -10,21 +10,15 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12">
-        <h1><strong>Pokemons:</strong></h1>
+        <h1><strong>Pokémons:</strong></h1>
+        <ion-list>
+          <ion-item *ngFor="let pokemon of pokemons">
+            <ion-button [routerLink]="['/details' , pokemon.name]" >
+              <h3>{{ pokemon.name }}</h3>
+            </ion-button>
+          </ion-item>
+        </ion-list>
       </ion-col>
     </ion-row>
-    <ion-card *ngFor="let pokemon of pokemons">
-      <ion-card-header>
-        <ion-card-title>{{ pokemon.name | titlecase }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <img [src]="pokemon.image" [alt]="pokemon.name" />
-        <p><strong>Height:</strong> {{ pokemon.height }} dm</p>
-        <p><strong>Weight:</strong> {{ pokemon.weight }} hg</p>
-        <p><strong>Types:</strong> {{ pokemon.types.join(', ') }}</p>
-        <p><strong>Abilities:</strong> {{ pokemon.abilities.join(', ') }}</p>
-        <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
-      </ion-card-content>
-    </ion-card>
   </ion-grid>
 </ion-content>

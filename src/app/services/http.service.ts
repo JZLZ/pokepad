@@ -14,6 +14,9 @@ export class HttpService {
   getPokemonDetails(nameOrId: string): Observable<any> {
   return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${nameOrId}`);
   }
+  getAbilityDetails(abilityName: string) {
+  return this.http.get<any>(`https://pokeapi.co/api/v2/ability/${abilityName}`);
+  }
 
 }
 
