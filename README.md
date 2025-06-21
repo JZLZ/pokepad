@@ -1,12 +1,12 @@
-# PokePad - Ionic Angular App
+# PokePad API - Ionic + Angular
 
-This project is a mobile app built with Ionic and Angular that uses the public PokeAPI to display Pokémon data.  
-The main screen shows the Pokémon's name and image, while the details screen presents additional descriptions and related images.  
-Pagination was implemented to improve the usability of Pokémon lists and descriptions.  
-Dependency injection is used to manage services and keep the code clean and maintainable.  
-Users can mark Pokémon as favorites in a dedicated list.  
-The app layout is responsive and adapts to both portrait and landscape device orientations.  
-I followed best practices with clear, frequent commits to document development progress on GitHub.  
-Third-party libraries were used to simplify development while keeping the code organized.  
-Components are modular and reusable, following Angular’s recommended design patterns.  
-This project is open for improvements and includes basic documentation for easier understanding.
+This project is a small mobile web app built using Ionic and Angular.  
+It consumes the public RESTful API [PokeAPI](https://pokeapi.co) to list and explore Pokémon data.  
+On the home screen, users can view a paginated list of Pokémon with names and images.  
+Each Pokémon can be clicked to access a details screen with height, weight, types, stats, and abilities.  
+Pokémon can also be marked as favorites, which are saved locally using localStorage.  
+I used Angular services with dependency injection to manage API calls cleanly.  
+The UI is fully responsive for both portrait and landscape orientations.  
+I followed modular design, with clear separation of logic and view components.  
+The code is committed in small and clear steps to reflect development progress.  
+Future improvements may include unit tests, animations, and offline caching.
