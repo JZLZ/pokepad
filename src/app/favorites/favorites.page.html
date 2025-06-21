@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>PokePad API</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Pokémons Favoritos</h1>
+
+  <ion-list *ngIf="favoritePokemons.length > 0; else noFavorites">
+    <ion-item *ngFor="let pokemon of favoritePokemons" [routerLink]="['/details', pokemon.name]">
+      <ion-thumbnail slot="start">
+        <img [src]="pokemon.image" [alt]="pokemon.name" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ pokemon.name | titlecase }}</h2>
+        <p>ID: {{ pokemon.id }}</p>
+        <p>Tipos: {{ pokemon.types.join(', ') }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noFavorites>
+    <p>Você ainda não adicionou nenhum Pokémon aos favoritos.</p>
+  </ng-template>
+</ion-content>

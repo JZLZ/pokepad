@@ -1,9 +1,8 @@
-// Styles do title
+/* Styles do title */
 ion-title {
   text-align: center;
   font-size: 1.5rem;
-  font-weight: 600;
-  font-style: bold;
+  font-weight: 600; /* negrito */
   color: whitesmoke;
   background-color: red;
   padding: 1rem;
@@ -13,12 +12,14 @@ ion-title {
   display: flex;
   justify-content: center;
 }
+
 h1 {
   font-size: 2.5rem;
   color: #ffffff;
   text-align: center;
   margin: 1rem 0;
 }
+
 h3 {
   background: none;
   font-size: 1.5rem;
@@ -26,29 +27,37 @@ h3 {
   text-align: center;
   margin: 0.5rem 0;
 }
+
 ion-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 ion-item ion-label {
   font-size: 1.2rem;
   color: #495057;
 }
+
 ion-item ion-button {
-  --background: none;
+  --background: transparent;
   text-align: center;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
+
 ion-item ion-button:hover {
   background-color: rgb(0, 94, 255);
+  color: white;
 }
+
 ion-item ion-button:active {
   background-color: rgba(0, 94, 255, 0.636);
 }
-//buttons preenche tela
+
+/* Botões que preenchem tela */
 ion-button {
   width: 100%;
   height: 100%;
@@ -58,4 +67,35 @@ ion-button {
   font-size: 1.2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-} 
+}
+
+/* Botão minimalista de favoritos */
+.minimal-favorite-btn {
+  --background: transparent;
+  --border-color: #007aff88; /* azul suave e transparente */
+  --border-width: 1px;
+  --border-style: solid;
+  --color: #007affaa; /* azul suave com transparência */
+  --ripple-color: #007aff22; /* ripple bem suave */
+  font-weight: 500;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  padding: 4px 10px;
+  width: auto;
+  height: auto;
+  min-width: 80px;
+  box-shadow: none;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.minimal-favorite-btn:hover {
+  --background: #007aff22; /* azul claro transparente */
+  --border-color: #007affcc;
+  --color: #007affdd;
+  cursor: pointer;
+}
+
+.minimal-favorite-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007aff55;
+}

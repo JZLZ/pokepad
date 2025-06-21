@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpService } from '../services/http.service'; // Ajuste o caminho se necessário
+import { HttpService } from '../services/http.service';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
@@ -14,6 +14,7 @@ import { IonicModule } from '@ionic/angular';
 export class DetailsPage implements OnInit {
   pokemonName: string = '';
   pokemonData: any;
+  isFavorite: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +24,7 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.pokemonName = this.route.snapshot.paramMap.get('name')!;
     this.loadPokemonDetails();
+    this.checkFavorite();
   }
 
   async loadPokemonDetails() {
@@ -68,5 +70,26 @@ export class DetailsPage implements OnInit {
     } catch (error) {
       console.error('Error fetching Pokémon details:', error);
     }
+  }
+
+  toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+
+    // Aqui pode salvar no localStorage ou em um serviço
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    if (this.isFavorite) {
+      favorites.push(this.pokemonData.name);
+    } else {
+      const index = favorites.indexOf(this.pokemonData.name);
+      if (index > -1) favorites.splice(index, 1);
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
+  checkFavorite() {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    this.isFavorite = favorites.includes(this.pokemonName);
   }
 }

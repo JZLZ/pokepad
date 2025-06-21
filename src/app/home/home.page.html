@@ -11,9 +11,17 @@
     <ion-row>
       <ion-col size="12">
         <h1><strong>Pokémons:</strong></h1>
+
+        <ion-button 
+          class="minimal-favorite-btn" 
+          routerLink="/favorites">
+          Favoritos
+        </ion-button>
+
+
         <ion-list>
           <ion-item *ngFor="let pokemon of pokemons">
-            <ion-button [routerLink]="['/details' , pokemon.name]" >
+            <ion-button [routerLink]="['/details', pokemon.name]">
               <h3>{{ pokemon.name }}</h3>
             </ion-button>
           </ion-item>

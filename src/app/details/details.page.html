@@ -11,6 +11,17 @@
 
 <ion-content class="center-x" *ngIf="pokemonData">
   <ion-card>
+      <ion-item lines="none">
+        <ion-label>{{ pokemonData.name | titlecase }}</ion-label>
+        <ion-button fill="clear" slot="end" (click)="toggleFavorite()">
+          <ion-icon
+            [name]="isFavorite ? 'heart' : 'heart-outline'"
+            color="danger"
+            slot="icon-only">
+          </ion-icon>
+        </ion-button>
+      </ion-item>
+
     <img class="imagem" [src]="pokemonData.image" [alt]="pokemonData.name" />
     <figcaption>{{ pokemonData.name | titlecase }}</figcaption>
     <h4><strong>Base Experience:</strong> {{ pokemonData.base_experience }} XP</h4>
