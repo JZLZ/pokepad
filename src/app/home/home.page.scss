@@ -15,7 +15,7 @@ ion-title {
 
 h1 {
   font-size: 2.5rem;
-  color: #ffffff;
+  color: var(--ion-text-color);
   text-align: center;
   margin: 1rem 0;
 }
@@ -23,7 +23,7 @@ h1 {
 h3 {
   background: none;
   font-size: 1.5rem;
-  color: #ffffff;
+  color: var(--ion-text-color);
   text-align: center;
   margin: 0.5rem 0;
 }
