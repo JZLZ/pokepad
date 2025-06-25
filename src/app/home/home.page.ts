@@ -10,13 +10,20 @@ import { forkJoin } from 'rxjs';
 })
 export class HomePage implements OnInit {
   public pokemons: any[] = [];
+  public filteredPokemons: any[] = [];
   public favorites: number[] = [];
+
+  public searchTerm: string = '';
+
+  private limit = 100;    // quantos pokemons carregar por vez
+  private offset = 0;    // a partir de qual índice carregar
+  public loading = false;
 
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
     this.loadFavorites();
-    this.getPokemons();
+    this.loadPokemons();
   }
 
   loadFavorites() {
@@ -46,13 +53,14 @@ export class HomePage implements OnInit {
     return this.favorites.includes(pokemonId);
   }
 
-  getPokemons() {
-    this.httpService.getPokemons().subscribe((data: any) => {
+  loadPokemons() {
+    this.loading = true;
+    this.httpService.getPokemons(this.limit, this.offset).subscribe((data: any) => {
       const requests = data.results.map((poke: any) =>
         this.httpService.getPokemonDetails(poke.name)
       );
       forkJoin<any[]>(requests).subscribe((details: any[]) => {
-        this.pokemons = details.map(pokemon => ({
+        const newPokemons = details.map(pokemon => ({
           id: pokemon.id,
           name: pokemon.name,
           height: pokemon.height / 10,
@@ -66,8 +74,41 @@ export class HomePage implements OnInit {
             value: s.base_stat
           }))
         }));
+
+        this.pokemons = [...this.pokemons, ...newPokemons];
+        this.applyFilter();
+        this.loading = false;
+      }, error => {
+        console.error('Erro ao buscar detalhes dos pokemons', error);
+        this.loading = false;
       });
+    }, error => {
+      console.error('Erro ao buscar lista de pokemons', error);
+      this.loading = false;
     });
+  }
+
+  loadMorePokemons() {
+    this.offset += this.limit; // pula para o próximo "bloco"
+    this.loadPokemons();
+  }
+
+  // Aplica filtro conforme o searchTerm na lista pokemons
+  applyFilter() {
+    const term = this.searchTerm.trim().toLowerCase();
+    if (!term) {
+      this.filteredPokemons = this.pokemons;
+    } else {
+      this.filteredPokemons = this.pokemons.filter(p =>
+        p.name.toLowerCase().includes(term)
+      );
+    }
+  }
+
+  // Método para ser chamado no evento de input da searchbar
+  onSearchChange(event: any) {
+    this.searchTerm = event.detail.value;
+    this.applyFilter();
   }
 
   showPokemon(id: number) {

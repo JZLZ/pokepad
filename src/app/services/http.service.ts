@@ -7,16 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
 
+  private baseUrl = 'https://pokeapi.co/api/v2';
+
   constructor(private http: HttpClient) { }
-  getPokemons () {
-    return this.http.get('https://pokeapi.co/api/v2/pokemon/');
+
+  // Agora aceita limit e offset para controlar quantidade e página
+  getPokemons(limit: number = 20, offset: number = 0): Observable<any> {
+    return this.http.get(`${this.baseUrl}/pokemon?limit=${limit}&offset=${offset}`);
   }
+
   getPokemonDetails(nameOrId: string): Observable<any> {
-  return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${nameOrId}`);
+    return this.http.get<any>(`${this.baseUrl}/pokemon/${nameOrId}`);
   }
-  getAbilityDetails(abilityName: string) {
-  return this.http.get<any>(`https://pokeapi.co/api/v2/ability/${abilityName}`);
+
+  getAbilityDetails(abilityName: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ability/${abilityName}`);
   }
 
 }
-

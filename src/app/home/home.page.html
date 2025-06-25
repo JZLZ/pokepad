@@ -4,6 +4,14 @@
       PokePad API
     </ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder="Pesquisar Pokémon"
+      debounce="300"
+      [(ngModel)]="searchTerm"
+      (ionInput)="onSearchChange($event)">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -12,20 +20,22 @@
       <ion-col size="12">
         <h1><strong>Pokémons:</strong></h1>
 
-        <ion-button 
-          class="minimal-favorite-btn" 
-          routerLink="/favorites">
+        <ion-button class="minimal-favorite-btn" routerLink="/favorites">
           Favoritos
         </ion-button>
 
-
         <ion-list>
-          <ion-item *ngFor="let pokemon of pokemons">
-            <ion-button [routerLink]="['/details', pokemon.name]">
-              <h3>{{ pokemon.name }}</h3>
+          <ion-item *ngFor="let pokemon of filteredPokemons">
+            <ion-button [routerLink]="['/details', pokemon.name]" fill="clear" expand="block">
+              <h3>{{ pokemon.name | titlecase }}</h3>
             </ion-button>
           </ion-item>
         </ion-list>
+
+        <ion-button class="minimal-favorite-btn" (click)="loadMorePokemons()" [disabled]="loading">
+          {{ loading ? 'Carregando...' : 'Carregar mais' }}
+        </ion-button>
+
       </ion-col>
     </ion-row>
   </ion-grid>
